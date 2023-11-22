@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import useSpeechToText from '@/lib/hooks/useSpeechToText';
 
 interface IMessages {
   name: string;
@@ -8,6 +9,8 @@ interface IMessages {
 
 const socket = io('http://localhost:4000');
 const HomePage = () => {
+  const { transcript, listening, toggleListening } = useSpeechToText();
+
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<IMessages[]>([]);
@@ -41,6 +44,10 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+
+      <h1>Web Speech API</h1>
+      <textarea className="transcript" value={transcript} />
+      <button onClick={toggleListening}>{listening ? '음성인식 중지' : '음성인식 시작'}</button>
     </div>
   );
 };
