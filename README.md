@@ -1,1 +1,1 @@
-# PoliSync
+# PoliSync - client
