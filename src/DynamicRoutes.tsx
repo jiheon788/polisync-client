@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import routerMeta from '@/lib/routerMeta';
+import Layout from './components/Layout';
 
 const lazyImport = (pageName: string) => lazy(() => import(`@/pages/${pageName}`));
 
@@ -18,17 +19,19 @@ interface IDynamicRoutes {
 
 const DynamicRoutes = () => (
   <Routes>
-    {pages.map(({ Component, path }: IDynamicRoutes) => (
-      <Route
-        key={path}
-        path={path}
-        element={
-          <Suspense fallback={<div>Loading...</div>}>
-            <Component />
-          </Suspense>
-        }
-      />
-    ))}
+    <Route element={<Layout />}>
+      {pages.map(({ Component, path }: IDynamicRoutes) => (
+        <Route
+          key={path}
+          path={path}
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Component />
+            </Suspense>
+          }
+        />
+      ))}
+    </Route>
   </Routes>
 );
 
