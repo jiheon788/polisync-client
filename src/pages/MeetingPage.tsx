@@ -5,8 +5,10 @@ import useWebSocket from '@/lib/hooks/useWebSocket';
 import useQueryString from '@/lib/hooks/useQueryString';
 import routerMeta from '@/lib/routerMeta';
 import useScrollTo from '@/lib/hooks/useScrollTo';
+import useInput from '@/lib/hooks/useInput';
 
 const MeetingPage = () => {
+  const [temp, onChangeTemp] = useInput('');
   const { messages, sendMessage } = useWebSocket();
   const { targetRef } = useScrollTo(messages);
 
@@ -28,6 +30,16 @@ const MeetingPage = () => {
     <Stack flexDirection="row" height="100%">
       <Stack flex={0.2} justifyContent="center" gap="30px" alignItems="center">
         <Avatar sx={{ width: '80px', height: '80px' }} />
+
+        <textarea className="temp" value={temp} onChange={onChangeTemp} placeholder="temp" />
+        <button
+          type="button"
+          onClick={() => {
+            sendMessage(username, temp);
+          }}
+        >
+          Temp
+        </button>
 
         <textarea className="transcript" value={transcript} />
         <button type="button" onMouseDown={startListening} onMouseUp={stopListening}>

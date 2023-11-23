@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import io from 'socket.io-client';
 import { SOCKET_SERVER_URL } from '@/constants/config';
+import useMessagesState from '../states/messages/useMessagesState';
 
-export interface IMessages {
-  name: string;
-  message: string;
-}
 if (!SOCKET_SERVER_URL) throw new Error('SOCKET_SERVER_URL is not defined');
 
 const socket = io(SOCKET_SERVER_URL);
 
 const useWebSocket = () => {
-  const [messages, setMessages] = useState<IMessages[]>([]);
+  const { messages, receiveMessage } = useMessagesState();
 
   useEffect(() => {
-    const receiveMessage = (data: IMessages) => {
-      setMessages((currentMessages) => [...currentMessages, data]);
-    };
-
     socket.on('chat message', receiveMessage);
 
     return () => {
