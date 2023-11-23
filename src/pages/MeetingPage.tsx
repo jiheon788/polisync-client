@@ -1,28 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Avatar, Stack } from '@mui/material';
+import { Navigate } from 'react-router-dom';
 import useSpeechToText from '@/lib/hooks/useSpeechToText';
 import useWebSocket from '@/lib/hooks/useWebSocket';
 import useQueryString from '@/lib/hooks/useQueryString';
+import routerMeta from '@/lib/routerMeta';
 
 const MeetingPage = () => {
   const { messages, sendMessage } = useWebSocket();
   const { getParams } = useQueryString();
-
   const username = getParams('username');
 
-  const { transcript, listening, startListening, stopListening } =
-    useSpeechToText({
-      reset: true,
-      stopCallback: () => {
-        sendMessage(username, transcript);
-      },
-    });
+  const {
+    transcript,
+    browserSupportsSpeechRecognition,
+    listening,
+    startListening,
+    stopListening,
+  } = useSpeechToText({
+    reset: true,
+    stopCallback: () => {
+      sendMessage(username, transcript);
+    },
+  });
 
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  if (!browserSupportsSpeechRecognition) {
+    return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;
+  }
 
   return (
     <Stack flexDirection="row" height="100%">

@@ -13,7 +13,12 @@ const useSpeechToText = ({
   stopCallback,
   reset,
 }: IUseSpeechToText) => {
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
 
   const startListening = () => {
     SpeechRecognition.startListening({ language: 'ko-KR', continuous: true });
@@ -37,6 +42,7 @@ const useSpeechToText = ({
 
   return {
     transcript,
+    browserSupportsSpeechRecognition,
     listening,
     startListening,
     stopListening,

@@ -3,12 +3,15 @@ import { Routes, Route } from 'react-router-dom';
 import routerMeta from '@/lib/routerMeta';
 import Layout from './components/Layout';
 
-const lazyImport = (pageName: string) => lazy(() => import(`@/pages/${pageName}`));
+const lazyImport = (pageName: string) =>
+  lazy(() => import(`@/pages/${pageName}`));
 
-const pages = Object.keys(routerMeta).map((componentKey: string) => {
+const pages = Object.keys(routerMeta).map((componentKey) => {
+  const key = componentKey as keyof typeof routerMeta;
+
   return {
-    Component: lazyImport(componentKey),
-    path: routerMeta[componentKey].path,
+    Component: lazyImport(key),
+    path: routerMeta[key].path,
   };
 });
 

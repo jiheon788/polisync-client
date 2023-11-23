@@ -8,7 +8,7 @@
 
 ### Speech to Text (Web Speech API)
 
-- [ ] user interface (mic on/off button)
+- [x] user interface (mic on/off button)
 - [x] Microphone on: Convert user's voice into text
 - [x] Microphone off: Deactivate Speech mode and simultaneously send the chat message
 

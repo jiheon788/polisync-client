@@ -1,21 +1,16 @@
-export interface IRouterMeta {
-  path: string;
-  isShow: boolean;
-}
-
-export type RouterMetaType = {
-  [key: string]: IRouterMeta;
-};
-
-const routerMeta: RouterMetaType = {
+const routerMeta = {
   HomePage: {
     path: '/',
-    isShow: false,
   },
   MeetingPage: {
     path: '/meeting',
-    isShow: false,
   },
-};
+  MeetingEndPage: {
+    path: '/end',
+  },
+  NotSupportsSpeechRecognitionPage: {
+    path: '/not-supported',
+  },
+} as const;
 
 export default routerMeta;
