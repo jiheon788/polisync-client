@@ -1,6 +1,7 @@
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
+import useExpertSystem from './useExpertSystem';
 
 interface IUseSpeechToText {
   startCallback?: () => void;
@@ -13,12 +14,13 @@ const useSpeechToText = ({
   stopCallback,
   reset,
 }: IUseSpeechToText) => {
+  const commands = useExpertSystem();
   const {
     transcript,
     listening,
     resetTranscript,
     browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  } = useSpeechRecognition({ commands });
 
   const startListening = () => {
     SpeechRecognition.startListening({ language: 'ko-KR', continuous: true });
