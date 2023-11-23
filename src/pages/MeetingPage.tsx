@@ -1,0 +1,59 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Avatar, Stack } from '@mui/material';
+import useSpeechToText from '@/lib/hooks/useSpeechToText';
+import useWebSocket from '@/lib/hooks/useWebSocket';
+import useQueryString from '@/lib/hooks/useQueryString';
+
+const MeetingPage = () => {
+  const { messages, sendMessage } = useWebSocket();
+  const { getParams } = useQueryString();
+
+  const username = getParams('username');
+
+  const { transcript, listening, startListening, stopListening } =
+    useSpeechToText({
+      reset: true,
+      stopCallback: () => {
+        sendMessage(username, transcript);
+      },
+    });
+
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  return (
+    <Stack flexDirection="row" height="100%">
+      <Stack flex={0.2} justifyContent="center" gap="30px" alignItems="center">
+        <Avatar sx={{ width: '80px', height: '80px' }} />
+
+        <textarea className="transcript" value={transcript} />
+        <button
+          type="button"
+          onMouseDown={startListening}
+          onMouseUp={stopListening}
+        >
+          {listening ? '음성인식 중..' : '음성인식 시작'}
+        </button>
+      </Stack>
+      <Stack
+        flex={0.4}
+        sx={{
+          backgroundColor: '#fff',
+        }}
+      >
+        {messages.map((msg, index) => (
+          <div key={index}>
+            {msg.name}: {msg.message}
+          </div>
+        ))}
+        <div ref={bottomRef} />
+      </Stack>
+      <Stack flex={0.4} sx={{ backgroundColor: '#F9FAFA' }}></Stack>
+    </Stack>
+  );
+};
+
+export default MeetingPage;

@@ -1,58 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Avatar, Stack } from '@mui/material';
-import useSpeechToText from '@/lib/hooks/useSpeechToText';
-import useWebSocket from '@/lib/hooks/useWebSocket';
+import { useNavigate } from 'react-router-dom';
+import routerMeta from '@/lib/routerMeta';
+import useInput from '@/lib/hooks/useInput';
 
 const HomePage = () => {
-  const [name, setName] = useState('');
-  const { messages, sendMessage } = useWebSocket();
-  const { transcript, listening, startListening, stopListening } =
-    useSpeechToText({
-      reset: true,
-      stopCallback: () => {
-        sendMessage(name, transcript);
-      },
-    });
+  const [username, onChangeUsername] = useInput('');
+  const navigate = useNavigate();
 
-  const bottomRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+  const onEnter = () => {
+    navigate(`${routerMeta.MeetingPage.path}?username=${username}`);
+  };
 
   return (
-    <Stack flexDirection="row" height="100%">
-      <Stack flex={0.2} justifyContent="center" gap="30px" alignItems="center">
-        <Avatar sx={{ width: '80px', height: '80px' }} />
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="이름"
-        />
-        <textarea className="transcript" value={transcript} />
-        <button
-          type="button"
-          onMouseDown={startListening}
-          onMouseUp={stopListening}
-        >
-          {listening ? '음성인식 중지' : '음성인식 시작'}
-        </button>
-      </Stack>
-      <Stack
-        flex={0.4}
-        sx={{
-          backgroundColor: '#fff',
-        }}
-      >
-        {messages.map((msg, index) => (
-          <div key={index}>
-            {msg.name}: {msg.message}
-          </div>
-        ))}
-        <div ref={bottomRef} />
-      </Stack>
-      <Stack flex={0.4} sx={{ backgroundColor: '#F9FAFA' }}></Stack>
-    </Stack>
+    <>
+      <input value={username} onChange={onChangeUsername} placeholder="이름" />
+      <button type="button" onClick={onEnter}>
+        Enter
+      </button>
+    </>
   );
 };
 

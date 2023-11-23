@@ -3,7 +3,7 @@
 ### Web Socket Chat (Web Socket Server)
 
 - [ ] user interface (username input, enter chat room button, chat list, user info)
-- [ ] User 1, User 2, ...N join a meeting room (authentication/authorization not required)
+- [x] User 1, User 2, ...N join a meeting room (using querystring, authentication/authorization not required)
 - [x] Exchange messages within the chat room
 
 ### Speech to Text (Web Speech API)

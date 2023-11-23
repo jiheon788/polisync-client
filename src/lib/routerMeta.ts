@@ -1,5 +1,4 @@
 export interface IRouterMeta {
-  name: string;
   path: string;
   isShow: boolean;
 }
@@ -10,13 +9,11 @@ export type RouterMetaType = {
 
 const routerMeta: RouterMetaType = {
   HomePage: {
-    name: '홈',
     path: '/',
     isShow: false,
   },
-  AuthPage: {
-    name: '로그인',
-    path: '/auth',
+  MeetingPage: {
+    path: '/meeting',
     isShow: false,
   },
 };
