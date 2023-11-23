@@ -4,23 +4,21 @@ import useSpeechToText from '@/lib/hooks/useSpeechToText';
 import useWebSocket from '@/lib/hooks/useWebSocket';
 
 const HomePage = () => {
-  const { transcript, listening, toggleListening } = useSpeechToText();
-  const { messages, sendMessage } = useWebSocket();
   const [name, setName] = useState('');
+  const { messages, sendMessage } = useWebSocket();
+  const { transcript, listening, startListening, stopListening } =
+    useSpeechToText({
+      reset: true,
+      stopCallback: () => {
+        sendMessage(name, transcript);
+      },
+    });
 
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
-  const onToggle = () => {
-    toggleListening();
-
-    if (listening) {
-      sendMessage(name, transcript);
-    }
-  };
 
   return (
     <Stack flexDirection="row" height="100%">
@@ -32,7 +30,11 @@ const HomePage = () => {
           placeholder="이름"
         />
         <textarea className="transcript" value={transcript} />
-        <button type="button" onClick={onToggle}>
+        <button
+          type="button"
+          onMouseDown={startListening}
+          onMouseUp={stopListening}
+        >
           {listening ? '음성인식 중지' : '음성인식 시작'}
         </button>
       </Stack>
