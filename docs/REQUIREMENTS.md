@@ -1,21 +1,26 @@
 # Requirement
 
-### - [ ] Web Socket Chat (Web Socket Server)
+### Web Socket Chat (Web Socket Server)
 
+- [ ] user interface (username input, enter chat room button, chat list, user info)
 - [ ] User 1, User 2, ...N join a meeting room (authentication/authorization not required)
 - [x] Exchange messages within the chat room
 
-### - [x] Speech to Text (Web Speech API)
+### Speech to Text (Web Speech API)
 
+- [ ] user interface (mic on/off button)
 - [x] Microphone on: Convert user's voice into text
 - [x] Microphone off: Deactivate Speech mode and simultaneously send the chat message
 
-### - [ ] Search References (Gov Data - text similarity)
+### Search References (National Assembly data - Analyzing text similarity)
 
+- [ ] user interface (side drawer)
 - [ ] Search for related references using text similarity
 - [ ] Display the searched materials when clicked
 
-### - [ ] Meeting Summary (using Generative AI)
+### Meeting Summary (using Generative AI)
 
+- [ ] user interface (finish button, loading UI, download PDF button, PDF Viewer)
+- [ ] Finish meeting (speech command)
 - [ ] Use AI to summarize the main content
 - [ ] Provide download as a PDF
