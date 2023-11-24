@@ -1,7 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import { BILL_INFO_API_URL } from '@/constants/apiUrls';
-import { GetBillInfoResponseType, getBillInfo } from '../apis/assembly';
+import { getBillInfo } from '../apis/assembly';
 import { removeFirstSlash } from '../utils/stringHelper';
 
 export class Factory<T> {
@@ -21,7 +20,7 @@ const useGetBillInfoInfiniteQuery = (billName: string, page = 1) => {
         const { head, row: rows } = rawData;
 
         return {
-          info: Object.assign({}, ...head),
+          head: Object.assign({}, ...head),
           rows,
         };
       }),

@@ -1,4 +1,4 @@
-import { Avatar, Stack } from '@mui/material';
+import { Avatar, Card, CardHeader, Stack } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 import useSpeechToText from '@/lib/hooks/useSpeechToText';
 import useWebSocket from '@/lib/hooks/useWebSocket';
@@ -7,6 +7,8 @@ import routerMeta from '@/lib/routerMeta';
 import useScrollTo from '@/lib/hooks/useScrollTo';
 import useInput from '@/lib/hooks/useInput';
 import useGetBillInfoInfiniteQuery from '@/lib/queries/useGetBillInfoInfiniteQuery';
+import useIntersectionObserver from '@/lib/hooks/useIntersectionObserver';
+import Loading from '@/components/Loading';
 
 const MeetingPage = () => {
   const [temp, onChangeTemp] = useInput('');
@@ -23,9 +25,9 @@ const MeetingPage = () => {
     },
   });
 
-  const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery('간호사');
-
-  console.log(data?.pages[0].rows);
+  const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery('간호사');
+  const { observerRef } = useIntersectionObserver({ hasNextPage, fetchNextPage });
+  console.log(data);
 
   if (!browserSupportsSpeechRecognition) {
     return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;
@@ -46,7 +48,7 @@ const MeetingPage = () => {
           Temp
         </button>
 
-        <textarea className="transcript" value={transcript} />
+        <textarea className="transcript" value={transcript} readOnly />
         <button type="button" onMouseDown={startListening} onMouseUp={stopListening}>
           {listening ? '음성인식 중..' : '음성인식 시작'}
         </button>
@@ -64,7 +66,19 @@ const MeetingPage = () => {
         ))}
         <div ref={targetRef} />
       </Stack>
-      <Stack flex={0.4} sx={{ backgroundColor: '#F9FAFA' }}></Stack>
+      <Stack flex={0.4} sx={{ backgroundColor: '#F9FAFA', overflowY: 'scroll' }}>
+        <Stack gap="5px">
+          {data?.pages.map(({ rows }) =>
+            rows.map((row) => (
+              <Card key={row.BILL_ID}>
+                <CardHeader title={row.BILL_NAME} subheader={`${row.CURR_COMMITTEE}`}></CardHeader>
+              </Card>
+            )),
+          )}
+        </Stack>
+        {isFetchingNextPage && <Loading />}
+        <div ref={observerRef}></div>
+      </Stack>
     </Stack>
   );
 };

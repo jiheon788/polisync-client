@@ -14,10 +14,6 @@ const useSpeechToText = ({ startCallback, stopCallback, reset }: IUseSpeechToTex
     commands,
   });
 
-  useEffect(() => {
-    console.log(transcript);
-  }, [transcript]);
-
   const startListening = () => {
     SpeechRecognition.startListening({ language: 'ko-KR', continuous: true });
 

@@ -15,8 +15,8 @@
 ### Search References (National Assembly data - Analyzing text similarity)
 
 - [ ] user interface (side drawer)
-- [ ] Search for related references using text similarity
-- [ ] Display the searched materials when clicked
+- [ ] When a specific keyword comes out, search for References. (National Assembly API)
+- [x] References are shown using infinite scrolls. (IntersectionObserver API)
 
 ### Meeting Summary (using Generative AI)
 
