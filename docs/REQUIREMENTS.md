@@ -22,5 +22,5 @@
 
 - [ ] user interface (finish button, loading UI, download PDF button, PDF Viewer)
 - [ ] Finish meeting (speech command)
-- [ ] Use AI to summarize the main content
+- [x] Use AI to summarize the main content (client - server - openai)
 - [ ] Provide download as a PDF

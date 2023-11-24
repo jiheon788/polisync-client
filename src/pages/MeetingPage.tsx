@@ -27,7 +27,6 @@ const MeetingPage = () => {
 
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery('간호사');
   const { observerRef } = useIntersectionObserver({ hasNextPage, fetchNextPage });
-  console.log(data);
 
   if (!browserSupportsSpeechRecognition) {
     return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;

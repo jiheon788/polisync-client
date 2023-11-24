@@ -2,9 +2,9 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import routerMeta from '@/lib/routerMeta';
 import Layout from './components/Layout';
+import Loading from './components/Loading';
 
-const lazyImport = (pageName: string) =>
-  lazy(() => import(`@/pages/${pageName}`));
+const lazyImport = (pageName: string) => lazy(() => import(`@/pages/${pageName}`));
 
 const pages = Object.keys(routerMeta).map((componentKey) => {
   const key = componentKey as keyof typeof routerMeta;
@@ -28,7 +28,7 @@ const DynamicRoutes = () => (
           key={path}
           path={path}
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading />}>
               <Component />
             </Suspense>
           }
