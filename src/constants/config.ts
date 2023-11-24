@@ -1,3 +1,4 @@
-export const SOCKET_SERVER_URL = process.env.REACT_APP_SOCKET_SERVER_URL || '';
+export const SERVER_URL = process.env.REACT_APP_SERVER_URL || '';
+
 export const NATIONAL_ASSEMBLY_OPEN_API_URL = process.env.REACT_APP_NATIONAL_ASSEMBLY_OPEN_API_URL || '';
 export const NATIONAL_ASSEMBLY_OPEN_API_KEY = process.env.REACT_APP_NATIONAL_ASSEMBLY_OPEN_API_KEY || '';

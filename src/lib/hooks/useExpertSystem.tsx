@@ -1,3 +1,5 @@
+import useMessagesState from '../states/messages/useMessagesState';
+
 const commonOptions = {
   isFuzzyMatch: true,
   bestMatchOnly: true,
@@ -11,8 +13,8 @@ const useExpertSystem = () => {
       callback: () => null,
     },
     {
-      command: ['발의법률안', '법률안', '심사', '처리'],
-      callback: () => null,
+      command: ['* 발의법률안 *', '* 법률안 *', '* 일부개정법률안 *', '* 전부개정법률안 *', '* 법률 *'],
+      callback: () => console.log('command'),
     },
   ];
 

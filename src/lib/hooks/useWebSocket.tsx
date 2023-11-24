@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import io from 'socket.io-client';
-import { SOCKET_SERVER_URL } from '@/constants/config';
+import { SERVER_URL } from '@/constants/config';
 import useMessagesState from '../states/messages/useMessagesState';
 
-if (!SOCKET_SERVER_URL) throw new Error('SOCKET_SERVER_URL is not defined');
+if (!SERVER_URL) throw new Error('SERVER_URL is not defined');
 
-const socket = io(SOCKET_SERVER_URL);
+const socket = io(SERVER_URL);
 
 const useWebSocket = () => {
   const { messages, receiveMessage } = useMessagesState();

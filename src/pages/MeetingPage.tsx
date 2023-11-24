@@ -6,6 +6,7 @@ import useQueryString from '@/lib/hooks/useQueryString';
 import routerMeta from '@/lib/routerMeta';
 import useScrollTo from '@/lib/hooks/useScrollTo';
 import useInput from '@/lib/hooks/useInput';
+import useGetBillInfoInfiniteQuery from '@/lib/queries/useGetBillInfoInfiniteQuery';
 
 const MeetingPage = () => {
   const [temp, onChangeTemp] = useInput('');
@@ -21,6 +22,10 @@ const MeetingPage = () => {
       sendMessage(username, transcript);
     },
   });
+
+  const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery('간호사');
+
+  console.log(data?.pages[0].rows);
 
   if (!browserSupportsSpeechRecognition) {
     return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;
