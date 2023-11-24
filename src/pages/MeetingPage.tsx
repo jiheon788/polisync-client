@@ -1,5 +1,6 @@
 import { Avatar, Card, CardHeader, Stack } from '@mui/material';
 import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import useSpeechToText from '@/lib/hooks/useSpeechToText';
 import useWebSocket from '@/lib/hooks/useWebSocket';
 import useQueryString from '@/lib/hooks/useQueryString';
@@ -9,14 +10,15 @@ import useInput from '@/lib/hooks/useInput';
 import useGetBillInfoInfiniteQuery from '@/lib/queries/useGetBillInfoInfiniteQuery';
 import useIntersectionObserver from '@/lib/hooks/useIntersectionObserver';
 import Loading from '@/components/Loading';
+import { containsKeyword, findWordBeforeKeyword } from '@/lib/utils/stringHelper';
 
 const MeetingPage = () => {
   const [temp, onChangeTemp] = useInput('');
   const { messages, sendMessage } = useWebSocket();
   const { targetRef } = useScrollTo(messages);
-
   const { getParams } = useQueryString();
   const username = getParams('username');
+  const [keyword, setKeyword] = useState('');
 
   const { transcript, browserSupportsSpeechRecognition, listening, startListening, stopListening } = useSpeechToText({
     reset: true,
@@ -25,13 +27,20 @@ const MeetingPage = () => {
     },
   });
 
-  const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery('간호사');
+  useEffect(() => {
+    const lastMessage = messages[messages.length - 1]?.message;
+
+    if (containsKeyword(lastMessage)) {
+      setKeyword(findWordBeforeKeyword(lastMessage));
+    }
+  }, [messages]);
+
+  const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery(keyword);
   const { observerRef } = useIntersectionObserver({ hasNextPage, fetchNextPage });
 
   if (!browserSupportsSpeechRecognition) {
     return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;
   }
-
   return (
     <Stack flexDirection="row" height="100%">
       <Stack flex={0.2} justifyContent="center" gap="30px" alignItems="center">
