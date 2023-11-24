@@ -5,6 +5,7 @@ import useWebSocket from '@/lib/hooks/useWebSocket';
 import useQueryString from '@/lib/hooks/useQueryString';
 import routerMeta from '@/lib/routerMeta';
 import useInput from '@/lib/hooks/useInput';
+import { generateAvatar } from '@/lib/utils/avatarGenerator';
 
 const UserController = () => {
   const [temp, onChangeTemp] = useInput('');
@@ -23,8 +24,8 @@ const UserController = () => {
     return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;
   }
   return (
-    <Stack flex={0.2} justifyContent="center" gap="30px" alignItems="center">
-      <Avatar sx={{ width: '80px', height: '80px' }} />
+    <Stack flex={0.2} justifyContent="center" gap="30px" alignItems="center" sx={{ backgroundColor: '#ECF0FE' }}>
+      <Avatar {...generateAvatar(username, { width: '80px', height: '80px' })} />
 
       <textarea className="temp" value={temp} onChange={onChangeTemp} placeholder="temp" />
       <button

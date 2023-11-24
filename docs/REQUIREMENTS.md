@@ -14,7 +14,7 @@
 
 ### Search References (National Assembly data - Analyzing text similarity)
 
-- [ ] user interface (side drawer)
+- [x] user interface (side drawer)
 - [x] When a specific keyword comes out, search for References. (National Assembly API)
 - [x] References are shown using infinite scrolls. (IntersectionObserver API)
 

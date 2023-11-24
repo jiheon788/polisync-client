@@ -13,7 +13,6 @@ const useIntersectionObserver = ({ hasNextPage, fetchNextPage, threshold = 0.1 }
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && hasNextPage) {
-          console.log('entry.isIntersecting');
           fetchNextPage();
         }
       });

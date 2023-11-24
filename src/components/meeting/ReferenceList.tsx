@@ -14,7 +14,6 @@ const ReferenceList = () => {
   const { data, hasNextPage, fetchNextPage, isFetchingNextPage } = useGetBillInfoInfiniteQuery(keyword);
   const { observerRef } = useIntersectionObserver({ hasNextPage, fetchNextPage, threshold: 0.8 });
 
-  console.log(data);
   useEffect(() => {
     const lastMessage = messages[messages.length - 1]?.message;
 
@@ -24,12 +23,12 @@ const ReferenceList = () => {
   }, [messages]);
 
   return (
-    <Stack flex={0.4} sx={{ overflowY: 'auto', height: '600px' }}>
-      <Stack gap="5px">
+    <Stack flex={0.4} sx={{ overflowY: 'auto', backgroundColor: '#ECF0FE' }}>
+      <Stack gap="12px" p="15px 10px">
         {data?.pages.map(({ rows }) => rows.map((row) => <ReferenceCard key={row.BILL_ID} row={row} />))}
+        {isFetchingNextPage && <Loading />}
+        <div ref={observerRef} style={{ minHeight: '10px' }} />
       </Stack>
-      {isFetchingNextPage && <Loading />}
-      <div ref={observerRef} style={{ minHeight: '10px' }} />
     </Stack>
   );
 };

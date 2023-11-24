@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Stack } from '@mui/material';
+import { CircularProgress, Stack } from '@mui/material';
 
 const Loading = () => {
   return (

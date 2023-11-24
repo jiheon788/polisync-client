@@ -1,5 +1,3 @@
-import useMessagesState from '../states/messages/useMessagesState';
-
 const commonOptions = {
   isFuzzyMatch: true,
   bestMatchOnly: true,

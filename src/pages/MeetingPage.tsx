@@ -5,7 +5,7 @@ import UserController from '@/components/meeting/UserController';
 
 const MeetingPage = () => {
   return (
-    <Stack flexDirection="row" height="100%">
+    <Stack flexDirection="row" height="95vh">
       <UserController />
       <MessageList />
       <ReferenceList />

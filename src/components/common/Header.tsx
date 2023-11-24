@@ -14,7 +14,7 @@ const Header = () => {
         flexDirection="row"
         alignItems="center"
         justifyContent="flex-end"
-        sx={{ height: '80px', borderBottom: '1px solid #ddd', backgroundColor: '#fff', px: '20px' }}
+        sx={{ height: '5vh', borderBottom: '1px solid #ddd', backgroundColor: '#fff', px: '20px' }}
       >
         <Button variant="contained" onClick={onEnd}>
           회의종료

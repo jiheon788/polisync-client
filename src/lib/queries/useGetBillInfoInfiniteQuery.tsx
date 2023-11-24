@@ -1,9 +1,10 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { BILL_INFO_API_URL } from '@/constants/apiUrls';
-import { getBillInfo } from '../apis/assembly';
+import { GetBillInfoResponseType, getBillInfo } from '../apis/assembly';
 import { removeFirstSlash } from '../utils/stringHelper';
 
-const isValidResponse = (data: any) => Object.keys(data).some((key) => key === removeFirstSlash(BILL_INFO_API_URL));
+const isValidResponse = (data: GetBillInfoResponseType) =>
+  Object.keys(data).some((key) => key === removeFirstSlash(BILL_INFO_API_URL));
 
 const useGetBillInfoInfiniteQuery = (billName: string, page = 1) => {
   const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({

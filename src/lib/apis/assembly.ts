@@ -48,6 +48,6 @@ export const getBillInfo = (pIndex: number, billName: string) => {
   return apiClientOfNationalAssembly.request<GetBillInfoResponseType>({
     method: 'get',
     url: BILL_INFO_API_URL,
-    params: { Type: 'json', pSize: 5, pIndex: pIndex, BILL_NAME: billName },
+    params: { Type: 'json', pSize: 15, pIndex: pIndex, BILL_NAME: billName },
   });
 };
