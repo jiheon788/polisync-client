@@ -2,7 +2,7 @@
 
 ### Web Socket Chat (Web Socket Server)
 
-- [ ] user interface (username input, enter chat room button, chat list, user info)
+- [x] user interface (username input, enter chat room button, chat list, user info)
 - [x] User 1, User 2, ...N join a meeting room (using querystring, authentication/authorization not required)
 - [x] Exchange messages within the chat room
 
@@ -23,4 +23,3 @@
 - [ ] user interface (finish button, loading UI, download PDF button, PDF Viewer)
 - [ ] Finish meeting (speech command)
 - [x] Use AI to summarize the main content (client - server - openai)
-- [ ] Provide download as a PDF

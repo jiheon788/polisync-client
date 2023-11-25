@@ -1,4 +1,4 @@
-import { Button, Stack } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import routerMeta from '@/lib/routerMeta';
 
@@ -13,12 +13,11 @@ const Header = () => {
       <Stack
         flexDirection="row"
         alignItems="center"
-        justifyContent="flex-end"
+        justifyContent="space-between"
         sx={{ height: '5vh', borderBottom: '1px solid #ddd', backgroundColor: '#fff', px: '20px' }}
       >
-        <Button variant="contained" onClick={onEnd}>
-          회의종료
-        </Button>
+        <Typography variant="h5">PoliSync</Typography>
+        <Button onClick={onEnd}>회의종료</Button>
       </Stack>
     </header>
   );
