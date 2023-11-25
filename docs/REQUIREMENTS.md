@@ -12,7 +12,7 @@
 - [x] Microphone on: Convert user's voice into text
 - [x] Microphone off: Deactivate Speech mode and simultaneously send the chat message
 
-### Search References (National Assembly data - Analyzing text similarity)
+### Search References (National Assembly data)
 
 - [x] user interface (side drawer)
 - [x] When a specific keyword comes out, search for References. (National Assembly API)
