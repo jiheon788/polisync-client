@@ -1,11 +1,11 @@
 import { useRecoilState } from 'recoil';
 
-import { DEFAULT_MESSAGES_STATE, IMessages, messagesState } from './atoms';
+import { DEFAULT_MESSAGES_STATE, IMessage, messagesState } from './atoms';
 
 const useMessagesState = () => {
   const [messages, setMessages] = useRecoilState(messagesState);
 
-  const receiveMessage = (receivedMessage: IMessages) => {
+  const receiveMessage = (receivedMessage: IMessage) => {
     setMessages((currentMessages) => [...currentMessages, receivedMessage]);
   };
 

@@ -5,10 +5,11 @@ import useMessagesState from '../states/messages/useMessagesState';
 
 if (!SERVER_URL) throw new Error('SERVER_URL is not defined');
 
-const socket = io(SERVER_URL);
-
-const useWebSocket = () => {
+const useWebSocket = (username: string) => {
   const { messages, receiveMessage } = useMessagesState();
+  const socket = io(SERVER_URL, {
+    query: { username },
+  });
 
   useEffect(() => {
     socket.on('chat message', receiveMessage);

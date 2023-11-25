@@ -1,10 +1,10 @@
-import { IMessages } from '../states/messages/atoms';
+import { IMessage } from '../states/messages/atoms';
 
 export const removeFirstSlash = (str: string) => {
   return str.startsWith('/') ? str.substring(1) : str;
 };
 
-export const convertArrayToString = (arr: IMessages[]) => {
+export const convertArrayToString = (arr: IMessage[]) => {
   return arr.map((obj) => `${obj.name}: ${obj.message}\n`).join('');
 };
 

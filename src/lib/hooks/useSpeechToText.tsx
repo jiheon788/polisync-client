@@ -1,14 +1,13 @@
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { useEffect } from 'react';
 import useExpertSystem from './useExpertSystem';
 
-interface IUseSpeechToText {
+interface IUseSpeechToTextArgs {
   startCallback?: () => void;
   stopCallback?: () => void;
   reset?: boolean;
 }
 
-const useSpeechToText = ({ startCallback, stopCallback, reset }: IUseSpeechToText) => {
+const useSpeechToText = ({ startCallback, stopCallback, reset }: IUseSpeechToTextArgs) => {
   const commands = useExpertSystem();
   const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition({
     commands,

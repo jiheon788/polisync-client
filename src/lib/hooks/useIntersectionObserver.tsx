@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-interface IuseIntersectionObserverProps {
+interface IuseIntersectionObserverArgs {
   hasNextPage: boolean | undefined;
   fetchNextPage: () => Promise<any>;
   threshold?: number;
 }
 
-const useIntersectionObserver = ({ hasNextPage, fetchNextPage, threshold = 0.1 }: IuseIntersectionObserverProps) => {
+const useIntersectionObserver = ({ hasNextPage, fetchNextPage, threshold = 0.1 }: IuseIntersectionObserverArgs) => {
   const observerRef = useRef<HTMLDivElement>(null);
 
   const handleObserver = useCallback<IntersectionObserverCallback>(
