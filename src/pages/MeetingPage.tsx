@@ -1,12 +1,12 @@
 import { Stack } from '@mui/material';
 import ReferenceList from '@/components/meeting/ReferenceList';
 import MessageList from '@/components/meeting/MessageList';
-import UserController from '@/components/meeting/UserController';
+import UserList from '@/components/meeting/UserList';
 
 const MeetingPage = () => {
   return (
     <Stack flexDirection="row" height="95vh">
-      <UserController />
+      <UserList />
       <MessageList />
       <ReferenceList />
     </Stack>

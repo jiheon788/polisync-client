@@ -1,14 +1,14 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { BILL_INFO_API_URL } from '@/constants/apiUrls';
-import { getBillInfo } from '../apis/assembly';
+import { MEMBER_INFO_API_URL } from '@/constants/apiUrls';
+import { getMemberInfo } from '../apis/assembly';
 import { removeFirstSlash } from '../utils/stringHelper';
 
-const useGetBillInfoInfiniteQuery = (billName: string, page = 1) => {
+const useGetMemberInfoInfiniteQuery = (memberName: string, page = 1) => {
   const { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
-    queryKey: [BILL_INFO_API_URL, billName],
+    queryKey: [MEMBER_INFO_API_URL, memberName],
     queryFn: () =>
-      getBillInfo(billName, page).then((res) => {
-        const rawData = Object.assign({}, ...res.data[removeFirstSlash(BILL_INFO_API_URL)]);
+      getMemberInfo(memberName, page).then((res) => {
+        const rawData = Object.assign({}, ...res.data[removeFirstSlash(MEMBER_INFO_API_URL)]);
         const { head, row: rows } = rawData;
 
         return {
@@ -20,14 +20,9 @@ const useGetBillInfoInfiniteQuery = (billName: string, page = 1) => {
       const nextPage = allPages.length + 1;
       return nextPage;
     },
-    enabled: !!billName,
-    staleTime: Infinity,
-    cacheTime: Infinity,
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
   });
 
   return { data, isSuccess, hasNextPage, fetchNextPage, isFetchingNextPage };
 };
 
-export default useGetBillInfoInfiniteQuery;
+export default useGetMemberInfoInfiniteQuery;

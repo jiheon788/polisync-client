@@ -52,7 +52,7 @@ const ReferenceCard = ({ row }: IReferenceCardProps) => {
     <Accordion expanded={open} onChange={onToggle}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Stack>
-          <Typography variant="h6">{`제 ${row.AGE}대 국회 안건: ${row.BILL_NAME}`}</Typography>
+          <Typography variant="h6">{`제 ${row.AGE}대 국회: ${row.BILL_NAME}`}</Typography>
           <Typography variant="caption">소관위: {row.CURR_COMMITTEE || ''}</Typography>
           <Typography variant="caption">
             제안자: {row.PROPOSER || ''} {row.PROPOSER_KIND}

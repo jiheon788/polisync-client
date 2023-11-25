@@ -22,7 +22,11 @@ export const generateAvatar = (name: string, sx?: AvatarOwnProps['sx']) => {
   const nameParts = name.split(' ');
 
   let initials;
-  if (nameParts.length > 1) {
+  const isKorean = /[\u3131-\uD79D]/giu.test(name);
+
+  if (isKorean) {
+    initials = nameParts[0][0];
+  } else if (nameParts.length > 1) {
     initials = `${nameParts[0][0]}${nameParts[1][0]}`;
   } else {
     initials = nameParts[0].length > 1 ? `${nameParts[0][0]}${nameParts[0][1]}` : nameParts[0][0];

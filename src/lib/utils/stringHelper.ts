@@ -8,7 +8,7 @@ export const convertArrayToString = (arr: IMessage[]) => {
   return arr.map((obj) => `${obj.name}: ${obj.message}\n`).join('');
 };
 
-const keywords = ['발의법률안', '법률안', '일부개정법률안', '전부개정법률안', '법률', '법안'];
+const keywords = ['발의법률안', '법률안', '일부개정법률안', '전부개정법률안', '법률', '법안', '법'];
 
 export const containsKeyword = (text: string) => {
   const regexPattern = keywords.map((keyword) => keyword.replace(/\s+/g, '\\s*')).join('|');

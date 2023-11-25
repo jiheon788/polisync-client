@@ -25,7 +25,7 @@ const MessageList = () => {
   });
 
   if (!browserSupportsSpeechRecognition) {
-    return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} />;
+    return <Navigate to={routerMeta.NotSupportsSpeechRecognitionPage.path} replace={false} />;
   }
 
   return (

@@ -1,3 +1,4 @@
+import { SUMMARY_API_URL } from '@/constants/apiUrls';
 import { apiClientOfServer } from './apiClient';
 
 export type PostSummaryResponseType = {
@@ -12,7 +13,7 @@ export type PostSummaryResponseType = {
 export const postSummary = (prompt: string) => {
   return apiClientOfServer.request<PostSummaryResponseType>({
     method: 'post',
-    url: '/api/openai',
+    url: SUMMARY_API_URL,
     data: {
       prompt,
     },
