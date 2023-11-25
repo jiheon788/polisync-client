@@ -24,7 +24,7 @@ const ReferenceList = () => {
 
   return (
     <Stack flex={0.4} sx={{ overflowY: 'auto', backgroundColor: '#ECF0FE' }}>
-      <Stack gap="12px" p="15px 10px">
+      <Stack p="15px 10px">
         {data?.pages.map(({ rows }) => rows.map((row) => <ReferenceCard key={row.BILL_ID} row={row} />))}
         {isFetchingNextPage && <Loading />}
         <div ref={observerRef} style={{ minHeight: '10px' }} />
