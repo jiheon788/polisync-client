@@ -4,7 +4,14 @@
 
 ### [Client Repo](https://github.com/jiheon788/polisync-client)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Server Repo](https://github.com/jiheon788/polisync-server)
 
+## Features
 
+- Creating the minutes of a meeting
+  - Voice-based Live chat using WebSocket & Web Speech API
+  - User classification using querystring (no-database)
+- Searching References based on voice recognition & Member of the National Assembly (National Assembly data)
+  - Infinite Scrolls with IntersectionObserver API
+- Meeting Summary (Generative AI with proxy server in the middle)
 
 ## Getting Started
 
@@ -30,15 +37,6 @@ REACT_APP_SERVER_URL={{server URL}}
 REACT_APP_NATIONAL_ASSEMBLY_OPEN_API_URL={{National Assembly Open API URL}}
 REACT_APP_NATIONAL_ASSEMBLY_OPEN_API_KEY={{National Assembly Open API key}}
 ```
-
-## Features
-
-- Creating the minutes of a meeting
-  - Voice-based Live chat using WebSocket & Web Speech API
-  - User classification using querystring (no-database)
-- Searching References based on voice recognition & Member of the National Assembly (National Assembly data)
-  - Infinite Scrolls with IntersectionObserver API
-- Meeting Summary (Generative AI with proxy server in the middle)
 
 ## Tech Stack
 
