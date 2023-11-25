@@ -10,6 +10,8 @@ import DebugObserver from './lib/states/DebugObserver';
 import theme from './styles/theme';
 import globalStyles from './styles/globalStyles';
 
+import './styles/animations.css';
+
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
