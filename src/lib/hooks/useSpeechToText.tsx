@@ -22,15 +22,15 @@ const useSpeechToText = ({ startCallback, stopCallback, reset }: IUseSpeechToTex
   };
 
   const stopListening = () => {
-    SpeechRecognition.stopListening();
+    SpeechRecognition.stopListening().then((_) => {
+      if (stopCallback) {
+        stopCallback();
+      }
 
-    if (stopCallback) {
-      stopCallback();
-    }
-
-    if (reset) {
-      resetTranscript();
-    }
+      if (reset) {
+        resetTranscript();
+      }
+    });
   };
 
   return {
