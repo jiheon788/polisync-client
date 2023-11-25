@@ -10,8 +10,9 @@ import useBoolean from '@/lib/hooks/useBoolean';
 import useDialog from '@/lib/hooks/useDialog';
 import { GetMemberInfoResponseType } from '@/lib/apis/assembly';
 import Loading from '../common/Loading';
+import UserDialog from './UserDialog';
 
-type MemberInfoType = GetMemberInfoResponseType[string][1]['row'][number];
+export type MemberInfoType = GetMemberInfoResponseType[string][1]['row'][number];
 
 const UserList = () => {
   const [temp, onChangeTemp] = useInput('');
@@ -80,9 +81,7 @@ const UserList = () => {
           <div ref={observerRef} style={{ minHeight: '10px' }} />
         </Stack>
       </Stack>
-      <Dialog open={open} onClose={handleCloseDialog}>
-        <DialogTitle>Set backup account</DialogTitle>
-      </Dialog>
+      <UserDialog open={open} onClose={handleCloseDialog} user={selectedMember} />
     </>
   );
 };

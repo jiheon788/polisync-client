@@ -10,17 +10,22 @@ const MeetingEndPage = () => {
 
   if (isLoading) {
     return (
-      <Stack gap="30px" justifyContent="center" alignItems="center" mt="30px">
+      <Stack gap="30px" justifyContent="center" alignItems="center" mt="30px" sx={{ width: '100%', height: '100%' }}>
         <Loading />
-        <Typography>{data?.response.content}</Typography>
         <Typography variant="h4">회의 요약문을 생성중입니다...</Typography>
       </Stack>
     );
   }
   return (
-    <Stack gap="30px" justifyContent="center" alignItems="center" mt="30px">
+    <Stack gap="30px" justifyContent="center" alignItems="center" mt="30px" sx={{ width: '100%', height: '100%' }}>
       <Typography variant="h3">요약본</Typography>
-      <Typography variant="body1">{data?.response.content}</Typography>
+      <Stack>
+        {data?.response.content.split('\n').map((content, index) => (
+          <Typography key={index} variant="body1">
+            {content}
+          </Typography>
+        ))}
+      </Stack>
       <Typography variant="caption">made by {data?.model}.</Typography>
     </Stack>
   );

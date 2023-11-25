@@ -20,6 +20,6 @@
 
 ### Meeting Summary (using Generative AI)
 
-- [ ] user interface (finish button, loading UI, download PDF button, PDF Viewer)
+- [x] user interface (finish button, loading UI)
 - [ ] Finish meeting (speech command)
 - [x] Use AI to summarize the main content (client - server - openai)
