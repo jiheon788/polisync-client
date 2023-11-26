@@ -33,6 +33,7 @@ interface IReferenceCardProps {
 }
 const ReferenceCard = ({ row }: IReferenceCardProps) => {
   const [open, onToggle] = useBoolean(false);
+
   const steps = Object.keys(stepMeta).map((key) => {
     const stepMetaKey = key as keyof typeof stepMeta;
 
@@ -42,6 +43,7 @@ const ReferenceCard = ({ row }: IReferenceCardProps) => {
       date: row[stepMetaKey],
     };
   });
+
   const onLink = (url: string | null) => {
     if (url) {
       window.open(url);
