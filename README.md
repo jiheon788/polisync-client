@@ -38,7 +38,7 @@ REACT_APP_NATIONAL_ASSEMBLY_OPEN_API_KEY={{National Assembly Open API key}}
 - Creating the minutes of a meeting
   - Voice-based Live chat using [WebSocket](https://developer.mozilla.org/ko/docs/Web/API/WebSocket) & [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
   - User classification using querystring (no-database)
-- Searching References based on voice recognition & Member of the National Assembly ([National Assembly data](https://open.assembly.go.kr/portal/openapi/main.do))
+- Searching References using expert systems ([National Assembly data](https://open.assembly.go.kr/portal/openapi/main.do))
   - Infinite Scrolls with [IntersectionObserver API](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
 - Meeting Summary using [OpenAI API (Generative AI)](https://openai.com/blog/openai-api) with proxy server in the middle
 
@@ -76,7 +76,7 @@ The following is a sequence diagram of the key features.
 
 ![Generating meeting summary](./docs/diagram-4-reference.svg)
 
-1. User refers to a specific keyword
+1. User refers to a specific keyword (expert systems)
 2. The Client App recognizes this keyword, extracts it, and sends a GET request to the National Assembly API.
 3. The National Assembly API sends a response, and users can check this information.
 4. Infinite scrolling allows the Client App to send additional GET requests, while the National Assembly API sends additional responses.
