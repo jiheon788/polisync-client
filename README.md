@@ -42,9 +42,13 @@ REACT_APP_NATIONAL_ASSEMBLY_OPEN_API_KEY={{National Assembly Open API key}}
   - Infinite Scrolls with [IntersectionObserver API](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
 - Meeting Summary using [OpenAI API (Generative AI)](https://openai.com/blog/openai-api) with proxy server in the middle
 
-## Tech Stack
+#### [Client](https://github.com/jiheon788/polisync-client)
 
 `React`, `TypeScript`, `@tanstack/react-query`, `Recoil`, `Mui` , `Axios`, `webSocket`
+
+#### [Server](https://github.com/jiheon788/polisync-server)
+
+`JavaScript`, `NodeJS`, `Express`, `openai`, `webSocket`, `nodemon`
 
 ## Service Architecture
 
