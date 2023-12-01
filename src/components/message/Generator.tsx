@@ -19,28 +19,28 @@ const Generator = () => {
 
   return (
     <Stack
+      justifyContent="center"
+      alignItems="center"
       sx={{
         width: '100%',
         pb: '12px',
         boxShadow: '0px -4px 8px rgba(0, 0, 0, 0.08)',
       }}
     >
-      <Stack justifyContent="center" alignItems="center">
-        <Box p={'20px 15px'} height="70px">
-          {transcript}
-        </Box>
-        <Button
-          type="button"
-          onMouseDown={startListening}
-          onMouseUp={stopListening}
-          startIcon={listening ? <MicIcon /> : <MicOffIcon />}
-          size="large"
-          sx={{ minWidth: '135px', animation: listening ? 'wave 1.2s infinite' : '' }}
-          disabled={!browserSupportsSpeechRecognition}
-        >
-          {browserSupportsSpeechRecognition ? (listening ? '음성인식 중..' : '음성인식 시작') : 'Not Supported Browser'}
-        </Button>
-      </Stack>
+      <Box p={'20px 15px'} height="70px">
+        {transcript}
+      </Box>
+      <Button
+        type="button"
+        onMouseDown={startListening}
+        onMouseUp={stopListening}
+        startIcon={listening ? <MicIcon /> : <MicOffIcon />}
+        size="large"
+        sx={{ minWidth: '135px', animation: listening ? 'wave 1.2s infinite' : '' }}
+        disabled={!browserSupportsSpeechRecognition}
+      >
+        {browserSupportsSpeechRecognition ? (listening ? '음성인식 중..' : '음성인식 시작') : 'Not Supported Browser'}
+      </Button>
     </Stack>
   );
 };
