@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material';
-import ReferenceList from '@/components/meeting/ReferenceList';
-import MessageList from '@/components/meeting/MessageList';
-import UserList from '@/components/meeting/UserList';
+import ReferenceList from '@/components/reference/ReferenceList';
+import MessageList from '@/components/message/MessageList';
+import UserList from '@/components/user/UserList';
 
 const MeetingPage = () => {
   return (
