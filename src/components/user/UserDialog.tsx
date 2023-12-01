@@ -8,11 +8,7 @@ interface IUserDialogProps {
   user: MemberInfoType | null;
 }
 const UserDialog = ({ open, onClose, user }: IUserDialogProps) => {
-  if (!user) {
-    onClose();
-    return null;
-  }
-
+  if (!user) return null;
   return (
     <Dialog open={open} onClose={onClose} maxWidth="lg">
       <DialogTitle>{`${user.HG_NM} ${user.JOB_RES_NM}`}</DialogTitle>
