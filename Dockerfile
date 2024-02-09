@@ -1,5 +1,5 @@
 # 기본 이미지 선택
-FROM node:alpine
+FROM node:18.17.1-alpine
 
 # 작업 디렉토리 설정
 WORKDIR /app
