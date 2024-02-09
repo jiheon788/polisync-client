@@ -37,7 +37,10 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "docker-build": "docker build -t jiheon788/polisync-client .",
+    "docker-deploy": "docker push jiheon788/polisync-client",
+    "docker-run": "docker run -d -p 80:80 jiheon788/polisync-client"
   },
   "browserslist": {
     "production": [
